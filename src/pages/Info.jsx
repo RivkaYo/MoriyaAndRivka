@@ -1,13 +1,11 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React from 'react'
 
 const Info = () => {
   return (
     <div>
       <h1>Info</h1>
-      <Outlet />
     </div>
-  );
-};
+  )
+}
 
-export default Info;
+export default Info
