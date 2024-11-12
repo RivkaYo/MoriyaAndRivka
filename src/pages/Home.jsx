@@ -9,9 +9,8 @@ const Home = () => {
         <NavLink to="/home"> info </NavLink>
         <NavLink to="todos"> Todos </NavLink>
         <NavLink to="posts"> Posts </NavLink>
-        <NavLink to="Alboms"> Alboms </NavLink>
+        <NavLink to="Albums"> Albums </NavLink>
         <button>Logout</button>
-
       </header>
       <Outlet />
     </div>
