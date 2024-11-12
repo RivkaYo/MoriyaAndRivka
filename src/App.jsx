@@ -11,7 +11,7 @@ import Albums from "./pages/Albums";
 import Photos from "./pages/Photos";
 
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -20,7 +20,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Login />} />
+          <Route index element={<Link to="/login">login</Link>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/home" element={<Home />}>
               <Route index element={<Info />} />
