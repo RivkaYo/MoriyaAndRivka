@@ -1,9 +1,23 @@
 import React, { useState } from "react";
+import useFetch from "../useFetch";
+import { json } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [data] =useFetch("users")
   function handleLogin(){
+    try{
+      const currentUser=data.find((user)=>user.name === username)
+      if(!currentUser)throw new Error ("wrong user name or password");
+      if(currentUser.website !== password) throw new Error ("wrong user name or password");
+      console.log('password: ', password);
+      console.log('currentUser.website: ', currentUser.website);
+      localStorage.setItem("currentUser", JSON.stringify(currentUser))
+    }catch (err){
+    console.log('err: ', err.message);
+        
+      }
     
   }
   return (
