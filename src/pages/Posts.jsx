@@ -1,10 +1,20 @@
 import React from "react";
-import useFetch from "../functions/useFetch";
+import findUsersitems from "../functions/findUsersitems";
+const Posts = ({currentUser}) => {
+  const myPostsArr = findUsersitems("posts", currentUser)
+  if (!myPostsArr) return<p>Loading...</p>
+  console.log('myPostsArr: ', myPostsArr);
 
-const Posts = () => {
   return (
     <div>
       <h1>Posts</h1>
+      
+        {myPostsArr.map((postItem) => (
+          <p key={postItem.id}>
+           { postItem.id}:  {postItem.title}
+          </p>
+        ))}
+     
     </div>
   );
 };
