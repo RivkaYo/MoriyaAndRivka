@@ -25,8 +25,9 @@ const Todos = ({ currentUser }) => {
       <ol>
         {myTodosArr.map((todoItem) => (
           <li key={todoItem.id}>
-            new todo item:
             <TodoItem item={todoItem} />
+            <br></br>
+            <br></br>
           </li>
         ))}
       </ol>

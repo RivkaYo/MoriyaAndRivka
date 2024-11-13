@@ -4,7 +4,8 @@ import Completed from "./Completed";
 const TodoItem = ({ item }) => {
   return (
     <div>
-      {item.id} {item.title}
+      ID: {item.id} <br></br>
+      Title: {item.title}
       <Completed item={item} />
     </div>
   );
