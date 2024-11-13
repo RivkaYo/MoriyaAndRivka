@@ -3,7 +3,7 @@ import useFetch from "../functions/useFetch";
 import InfoItem from "../components/InfoItem";
 
 const Info = ({ currentUser }) => {
-  const [user] = useFetch(`users/${currentUser.id}`);
+  const [user] = useFetch(`users`);
   return (
     <div>
       <h2>Info</h2>
