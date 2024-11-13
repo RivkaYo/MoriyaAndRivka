@@ -5,7 +5,12 @@ const InfoItem = ({keyName, value}) => {
   return (
         <div>
             <label htmlFor={keyName}> {keyName}: </label>
-              <input id={keyName} name={keyName} value={itemValue} onChange={(e)=> setItemValue(e.target.value)} />
+              <input 
+                id={keyName} 
+                name={keyName} 
+                value={itemValue} 
+                onChange={(e)=> setItemValue(e.target.value)}
+                />
         </div>
   )
 }
