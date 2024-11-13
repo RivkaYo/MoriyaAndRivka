@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Home = ({ currentUser }) => {
-  console.log('currentUser: ', currentUser);
+  // console.log('currentUser: ', currentUser);
 
   return (
     <div>

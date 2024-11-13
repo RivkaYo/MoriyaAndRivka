@@ -7,14 +7,15 @@ const Login = ({setCurrentUser,currentUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [users] = useFetch("users")
+  console.log('users: ', users);
   const navigate = useNavigate();
   function handleLogin(){
     try{
       setCurrentUser(users.find((user)=>user.name === username))
       if(!currentUser)throw new Error ("wrong user name or password");
       if(currentUser.website !== password) throw new Error ("wrong user name or password");
-      console.log('password: ', password);
-      console.log('currentUser.website: ', currentUser.website);
+      // console.log('password: ', password);
+      // console.log('currentUser.website: ', currentUser.website);
       localStorage.setItem("currentUser", JSON.stringify(currentUser))
       navigate("/home");
     }catch (err){
