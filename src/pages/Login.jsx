@@ -3,14 +3,14 @@ import useFetch from "../useFetch";
 
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setCurrentUser,currentUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [data] =useFetch("users")
+  const [users] = useFetch("users")
   const navigate = useNavigate();
   function handleLogin(){
     try{
-      const currentUser=data.find((user)=>user.name === username)
+      setCurrentUser(users.find((user)=>user.name === username))
       if(!currentUser)throw new Error ("wrong user name or password");
       if(currentUser.website !== password) throw new Error ("wrong user name or password");
       console.log('password: ', password);

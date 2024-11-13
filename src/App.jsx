@@ -14,16 +14,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 
+
 function App() {
+  const [currentUser, setCurrentUser] = useState({})
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-          <Route index element={<Link to="/login">login</Link>} />
-            <Route path="/login" element={<Login />} />
+          <Route index element={<Link to="/login" >login</Link>} />
+            <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/home" element={<Home />}>
+            <Route path="/home" element={<Home currentUser={currentUser}/>}>
               <Route index element={<Info />} />
               <Route path="todos" element={<Todos />} />
               <Route path="posts" element={<Posts />} />
