@@ -18,8 +18,3 @@ const handleUpdate = async (id) => {
   const result = await apiRequest(reqUrl, updateOptions);
   if (result) setFetchError(result);
 };
-
-//   to call this func:
-//   const reqUrl = `${API_URL}/${id}`;
-//   const result = await apiRequest(reqUrl, updateOptions);
-//   if (result) setFetchError(result);

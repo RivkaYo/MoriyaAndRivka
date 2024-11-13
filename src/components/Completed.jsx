@@ -1,8 +1,16 @@
 import React from "react";
+import useFetch from "../functions/useFetch";
 
 const Completed = ({ item }) => {
   function handleCompleted() {
-    alert("Mazal tov!");
+    useFetch(`todos/${item.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ completed: true }),
+    });
+    console.log("Mazal tov!");
   }
   return (
     <div>
