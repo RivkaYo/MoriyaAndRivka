@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../useFetch";
+import useFetch from "../functions/useFetch";
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
