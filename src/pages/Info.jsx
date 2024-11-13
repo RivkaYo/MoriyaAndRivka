@@ -2,8 +2,8 @@ import React from "react";
 import useFetch from "../functions/useFetch";
 import InfoItem from '../components/InfoItem'
 
-const Info = () => {
-  const [user] = useFetch("users/1");
+const Info = ({ currentUser }) => {
+  const [user] = useFetch(`users/${currentUser.id}`);
   return (
     <div>
 

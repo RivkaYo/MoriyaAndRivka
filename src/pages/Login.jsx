@@ -11,7 +11,7 @@ const Login = ({ setCurrentUser, currentUser }) => {
   const navigate = useNavigate();
   function handleLogin() {
     try {
-      setCurrentUser(users.find((user) => user.name === username));
+      setCurrentUser(users.find((user) => user.username === username));
       if (!currentUser) throw new Error("wrong user name or password");
       if (currentUser.website !== password)
         throw new Error("wrong user name or password");
