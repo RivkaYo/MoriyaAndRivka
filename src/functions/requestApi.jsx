@@ -1,7 +1,7 @@
 //this file handles fetch errors, and sets a temp to call fetch with different methods,
 const apiRequest = async (url = "", optionsObj = null, errMsg = null) => {
   try {
-    const response = await fetch(url, optionsObj);
+    const response = await fetch(`http://localhost:3000/${url}`, optionsObj);
     if (!response.ok)
       throw Error("server response not ok, please reload the app");
   } catch (err) {

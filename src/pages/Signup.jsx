@@ -2,17 +2,32 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../functions/useFetch";
-const Signup = () => {
+import apiRequest from "../functions/requestApi";
+const Signup = ({setCurrentUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [varifyPassword, setVarifyPassword] = useState(null);
-  const [data] = useFetch("users");
+  const [users] = useFetch("users");
   const navigate = useNavigate();
 
-  function handleSignup() {
-    data.find((user) => user.name === username)
-      ? alert("user name unavilable. try a diffrent one")
-      : navigate("/home");
+  async function handleSignup() {
+  const newUser = {  id:users.length+1, name: "", username: username, email: "",  address: { street: "",  suite: "",  city: "",  zipcode: "",  geo: { lat: "", lng: ""  }  }, phone: "", website: password,company: {  name: "", catchPhrase: "",  bs: ""  },}
+  const postRequset= {
+    method: "POST",
+    headers: {"Content-Type": "application/json",},
+    body: JSON.stringify( newUser)}
+
+  users.find((user) => user.name === username)
+    ? alert("user name unavilable. try a diffrent one")
+    : navigate("/home");
+  
+    const result= await apiRequest("users" ,postRequset)
+    if (result){alert("something went wrong")}
+  
+  
+  localStorage.setItem("currentUser",JSON.stringify(newUser))
+  setCurrentUser(newUser)
+  navigate("/home")
   }
 
   return (
