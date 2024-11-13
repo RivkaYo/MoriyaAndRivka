@@ -4,8 +4,9 @@ const useFetch = (url, optionsObj) => {
   const [data, setData] = useState(null);
   const [fetchError, setFetchError] = useState(null);
   useEffect(() => {
+    const apiUrl = `http://localhost:3000/${url}`;
     try {
-      fetch(`http://localhost:3000/${url}`, optionsObj)
+      fetch(apiUrl, optionsObj)
         .then((response) => {
           if (!response.ok) throw Error("Did not receive expected data");
           return response.json();
@@ -20,6 +21,7 @@ const useFetch = (url, optionsObj) => {
     }
   }, [url]);
 
+  console.log("data: ", data);
   return [data];
 };
 
