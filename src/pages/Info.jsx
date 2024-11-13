@@ -3,16 +3,16 @@ import useFetch from "../functions/useFetch";
 import InfoItem from '../components/InfoItem'
 
 const Info = () => {
-  const [users] = useFetch("users");
-  console.log("users: ", users);
+  const [user] = useFetch("users/1");
+  console.log("users: ", user);
 
   return (
     <div>
-      <h1>Info</h1>
-      {users && <p>{users[0].name}</p>}
+      
       <h2>Info</h2>
-      {
-        Object.entries(currentUser).map(([key,value]) => {
+      {user && <p>{user.name}</p>}
+      {user &&
+        Object.entries(user).map(([key,value]) => {
           if(typeof value=== "object"){
             console.log(key, value);
             Object.entries(value).map(([key,value])=>{
