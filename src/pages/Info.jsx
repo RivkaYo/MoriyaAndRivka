@@ -3,7 +3,6 @@ import useFetch from "../functions/useFetch";
 
 const Info = () => {
   const [users] = useFetch("users");
-  console.log("users: ", users);
 
   return (
     <div>

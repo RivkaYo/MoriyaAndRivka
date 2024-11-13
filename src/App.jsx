@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  const [currentUser, setcurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
   return (
     <>
@@ -26,7 +26,7 @@ function App() {
             element={
               <Layout
                 currentUser={currentUser}
-                setcurrentUser={setcurrentUser}
+                setCurrentUser={setCurrentUser}
               />
             }
           >
@@ -36,7 +36,7 @@ function App() {
               element={
                 <Login
                   currentUser={currentUser}
-                  setcurrentUser={setcurrentUser}
+                  setCurrentUser={setCurrentUser}
                 />
               }
             />
@@ -46,15 +46,27 @@ function App() {
               element={
                 <Home
                   currentUser={currentUser}
-                  setcurrentUser={setcurrentUser}
+                  setCurrentUser={setCurrentUser}
                 />
               }
             >
               <Route index element={<Info />} />
-              <Route path="todos" element={<Todos />} />
-              <Route path="posts" element={<Posts />} />
-              <Route path="albums" element={<Albums />}>
-                <Route path="photos" element={<Photos />} />
+              <Route
+                path="todos"
+                element={<Todos currentUser={currentUser} />}
+              />
+              <Route
+                path="posts"
+                element={<Posts currentUser={currentUser} />}
+              />
+              <Route
+                path="albums"
+                element={<Albums currentUser={currentUser} />}
+              >
+                <Route
+                  path="photos"
+                  element={<Photos currentUser={currentUser} />}
+                />
               </Route>
             </Route>
           </Route>
