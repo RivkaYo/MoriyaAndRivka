@@ -3,37 +3,41 @@ import useFetch from "../functions/useFetch";
 import InfoItem from "../components/InfoItem";
 
 const Info = ({ currentUser }) => {
-  const [user] = useFetch(`users/${currentUser.id}`);
+  console.log('currentUser: ', currentUser);
+  // const [user] = useFetch(`users/${currentUser.id}`);
+  const renderKeyValue = (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      // Handle nested object rendering
+      return (
+        <div key={key}>
+          <label>{key}:</label>
+          <div style={{ marginLeft: '20px' }}>
+            {/* Recursively call renderObject for nested objects */}
+            {renderObject(value)}
+          </div>
+        </div>
+      );
+    }
+  
+    // Handle primitive values by rendering a label and input
+    return (
+      <InfoItem key={key} value={value} keyName={key} />
+    );
+  };
+  
+  // Helper function to render the object
+  const renderObject = (obj) => {
+    return (
+      <div>
+        {Object.entries(obj).map(([key, value]) => renderKeyValue(key, value))}
+      </div>
+    );
+  };
   return (
     <div>
       <h2>Info</h2>
-      {user && <p>{user.name}</p>}
-      {user &&
-        Object.entries(user).map(([key, value]) => {
-          if (typeof value !== "object") {
-            return (
-              <>
-                <br />
-                <InfoItem key={key} value={value} keyName={key} />
-              </>
-            );
-          } else {
-            return (
-              <>
-                <br />
-                <div>
-                  {key}:
-                  {Object.entries(value).map(([key1, value1]) => {
-                    return (
-                      <InfoItem key={key1} value={value1} keyName={key1} />
-                    );
-                  })}
-                </div>
-              </>
-            );
-          }
-        })}
-      <br />
+      {currentUser && <p>{currentUser.name}</p>}
+      {renderObject(currentUser)}
     </div>
   );
 };

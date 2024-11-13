@@ -4,7 +4,9 @@ import useFetch from "../functions/useFetch";
 
 const Home = ({ currentUser }) => {
   // console.log('currentUser: ', currentUser);
-
+  const handleLogout=()=>{
+    localStorage.setItem("currentUser",{})
+  }
   return (
     <div>
       <header>
@@ -13,7 +15,7 @@ const Home = ({ currentUser }) => {
         <NavLink to="todos"> Todos </NavLink>
         <NavLink to="posts"> Posts </NavLink>
         <NavLink to="Albums"> Albums </NavLink>
-        <button>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </header>
       <Outlet />
     </div>

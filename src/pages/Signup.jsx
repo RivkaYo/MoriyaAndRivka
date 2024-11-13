@@ -11,7 +11,7 @@ const Signup = ({setCurrentUser}) => {
   const navigate = useNavigate();
 
   async function handleSignup() {
-  const newUser = {  id:users.length+1, name: "", username: username, email: "",  address: { street: "",  suite: "",  city: "",  zipcode: "",  geo: { lat: "", lng: ""  }  }, phone: "", website: password,company: {  name: "", catchPhrase: "",  bs: ""  },}
+  const newUser = {  id:`${users.length+1}`, name: "", username: username, email: "",  address: { street: "",  suite: "",  city: "",  zipcode: "",  geo: { lat: "", lng: ""  }  }, phone: "", website: password,company: {  name: "", catchPhrase: "",  bs: ""  },}
   const postRequset= {
     method: "POST",
     headers: {"Content-Type": "application/json",},

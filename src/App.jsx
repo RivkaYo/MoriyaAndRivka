@@ -16,6 +16,7 @@ import "./App.css";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+  
 
   return (
     <>
@@ -50,7 +51,9 @@ function App() {
                 />
               }
             >
-              <Route index element={<Info />} />
+              <Route index element={<Info 
+                  currentUser={currentUser}
+                  />} />
               <Route
                 path="todos"
                 element={<Todos currentUser={currentUser} />}
