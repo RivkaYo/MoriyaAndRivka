@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import useFetch from "../functions/useFetch";
 
 const Home = ({ currentUser }) => {
   // console.log('currentUser: ', currentUser);
@@ -7,7 +8,7 @@ const Home = ({ currentUser }) => {
   return (
     <div>
       <header>
-        <h4>Hello, {currentUser.name? currentUser.name : "guest"} </h4>
+        <h4>Hello, {currentUser.name ? currentUser.name : "guest"} </h4>
         <NavLink to="/home"> info </NavLink>
         <NavLink to="todos"> Todos </NavLink>
         <NavLink to="posts"> Posts </NavLink>

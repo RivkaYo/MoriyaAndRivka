@@ -1,4 +1,5 @@
 import React from "react";
+import useFetch from "../functions/useFetch";
 
 const Photos = () => {
   return (

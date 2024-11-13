@@ -1,12 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import useFetch from "../functions/useFetch";
 import InfoItem from '../components/InfoItem'
 
 const Info = () => {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"))
-  console.log('currentUser: ', currentUser);
+  const [users] = useFetch("users");
+  console.log("users: ", users);
+
   return (
     <div>
+      <h1>Info</h1>
+      {users && <p>{users[0].name}</p>}
       <h2>Info</h2>
       {
         Object.entries(currentUser).map(([key,value]) => {
@@ -25,7 +28,7 @@ const Info = () => {
     }
    
     </div>
-  )
-}
+  );
+};
 
-export default Info
+export default Info;
