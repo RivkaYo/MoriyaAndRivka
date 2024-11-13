@@ -3,7 +3,7 @@ import useFetch from "../functions/useFetch";
 import InfoItem from "../components/InfoItem";
 
 const Info = ({ currentUser }) => {
-  console.log('currentUser: ', currentUser);
+  
   // const [user] = useFetch(`users/${currentUser.id}`);
   const renderKeyValue = (key, value) => {
     if (typeof value === 'object' && value !== null) {
