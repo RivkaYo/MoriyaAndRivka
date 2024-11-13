@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import useFetch from "../functions/useFetch";
 
 const Home = ({ currentUser }) => {
-  console.log("currentUser: ", currentUser);
+  // console.log('currentUser: ', currentUser);
 
   return (
     <div>
