@@ -1,7 +1,13 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const Layout = ({ currentUser, setCurrentUser }) => {
+  const navigate= useNavigate()
+  const isEmpty = (obj) => Object.keys(obj).length === 0;
+  useEffect(()=>{
+    isEmpty(currentUser)?navigate("/login"):navigate("/home")
+    
+  },[])
   return (
     <div>
       <h2>welcome to our website!!!!!</h2>

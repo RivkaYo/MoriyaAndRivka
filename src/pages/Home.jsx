@@ -1,11 +1,13 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useFetch from "../functions/useFetch";
 
-const Home = ({ currentUser }) => {
-  // console.log('currentUser: ', currentUser);
+const Home = ({ currentUser, setCurrentUser}) => {
+  const navigate= useNavigate()
   const handleLogout=()=>{
     localStorage.setItem("currentUser",{})
+    setCurrentUser({})
+    navigate("/login");
   }
   return (
     <div>
