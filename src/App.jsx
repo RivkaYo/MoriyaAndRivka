@@ -15,15 +15,26 @@ import { Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
+  const [currUser, setCurrUser] = useState("");
+
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
-          <Route index element={<Link to="/login">login</Link>} />
-            <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={<Layout currUser={currUser} setCurrUser={setCurrUser} />}
+          >
+            <Route index element={<Link to="/login">login</Link>} />
+            <Route
+              path="/login"
+              element={<Login currUser={currUser} setCurrUser={setCurrUser} />}
+            />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/home" element={<Home />}>
+            <Route
+              path="/home"
+              element={<Home currUser={currUser} setCurrUser={setCurrUser} />}
+            >
               <Route index element={<Info />} />
               <Route path="todos" element={<Todos />} />
               <Route path="posts" element={<Posts />} />

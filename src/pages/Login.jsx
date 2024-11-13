@@ -1,33 +1,32 @@
 import React, { useState } from "react";
-import useFetch from "../useFetch";
+import useFetch from "../functions/useFetch";
+import { NavLink } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
-
-const Login = () => {
+const Login = ({ currUser, setCurrUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [data] =useFetch("users")
-  function handleLogin(){
-    try{
-      const currentUser=data.find((user)=>user.name === username)
-      if(!currentUser)throw new Error ("wrong user name or password");
-      if(currentUser.website !== password) throw new Error ("wrong user name or password");
-      console.log('password: ', password);
-      console.log('currentUser.website: ', currentUser.website);
-      localStorage.setItem("currentUser", JSON.stringify(currentUser))
-    }catch (err){
-    console.log('err: ', err.message);
-        
-      }
-    
+  const [data] = useFetch("users");
+  console.log("data: ", data);
+
+  async function handleLogin() {
+    try {
+      const checkedUser = data.find((user) => user.username === username);
+      if (!checkedUser) throw new Error("wrong user name or password");
+      if (checkedUser.website !== password)
+        throw new Error("wrong user name or password");
+      localStorage.setItem("currentUser", JSON.stringify(checkedUser));
+      setCurrUser(checkedUser);
+    } catch (err) {
+      console.log("err: ", err.message);
+    }
   }
-  function handleLogin() {}
   return (
     <div>
       <h1>Login Here!</h1>
       <label htmlFor="username">Username:</label>
       <br></br>
       <input
+        placeholder="Bret"
         type="text"
         className="username"
         value={username}
@@ -35,12 +34,12 @@ const Login = () => {
           setUsername(e.target.value);
         }}
       />
-      {console.log("username: ", username)}
       <br></br>
       <br></br>
       <label htmlFor="password">PassWord:</label>
       <br></br>
       <input
+        placeholder="hildegard.org"
         type="text"
         className="password"
         value={password}
@@ -52,7 +51,9 @@ const Login = () => {
       <br></br>
       <button onClick={handleLogin}>Log In</button>
       <br></br>
-      <button>Move to Sign up page</button>
+      <button>
+        <NavLink to="/signup">Move to Sign up page</NavLink>
+      </button>
     </div>
   );
 };
