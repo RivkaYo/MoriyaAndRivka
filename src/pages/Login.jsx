@@ -2,24 +2,29 @@ import React, { useState } from "react";
 import useFetch from "../functions/useFetch";
 import { NavLink } from "react-router-dom";
 
-const Login = ({ currUser, setCurrUser }) => {
+import { useNavigate } from "react-router-dom";
+
+const Login = ({ setCurrentUser, currentUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [data] = useFetch("users");
-  console.log("data: ", data);
-
-  async function handleLogin() {
+  const [users] = useFetch("users");
+  const navigate = useNavigate();
+  function handleLogin() {
     try {
-      const checkedUser = data.find((user) => user.username === username);
-      if (!checkedUser) throw new Error("wrong user name or password");
-      if (checkedUser.website !== password)
+      setCurrentUser(users.find((user) => user.name === username));
+      if (!currentUser) throw new Error("wrong user name or password");
+      if (currentUser.website !== password)
         throw new Error("wrong user name or password");
-      localStorage.setItem("currentUser", JSON.stringify(checkedUser));
-      setCurrUser(checkedUser);
+      console.log("password: ", password);
+      console.log("currentUser.website: ", currentUser.website);
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      navigate("/home");
     } catch (err) {
       console.log("err: ", err.message);
+      alert(err.message);
     }
   }
+
   return (
     <div>
       <h1>Login Here!</h1>
@@ -51,9 +56,7 @@ const Login = ({ currUser, setCurrUser }) => {
       <br></br>
       <button onClick={handleLogin}>Log In</button>
       <br></br>
-      <button>
-        <NavLink to="/signup">Move to Sign up page</NavLink>
-      </button>
+      <button onClick={() => navigate("/signup")}>Move to Sign up page</button>
     </div>
   );
 };
