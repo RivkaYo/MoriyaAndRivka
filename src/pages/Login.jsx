@@ -7,6 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [data] =useFetch("users")
+  const navigate = useNavigate();
   function handleLogin(){
     try{
       const currentUser=data.find((user)=>user.name === username)
@@ -15,13 +16,14 @@ const Login = () => {
       console.log('password: ', password);
       console.log('currentUser.website: ', currentUser.website);
       localStorage.setItem("currentUser", JSON.stringify(currentUser))
+      navigate("/home");
     }catch (err){
     console.log('err: ', err.message);
-        
+        alert(err.message)
       }
     
   }
-  function handleLogin() {}
+  
   return (
     <div>
       <h1>Login Here!</h1>
@@ -52,7 +54,7 @@ const Login = () => {
       <br></br>
       <button onClick={handleLogin}>Log In</button>
       <br></br>
-      <button>Move to Sign up page</button>
+      <button onClick={()=>navigate("/signup")}>Move to Sign up page</button>
     </div>
   );
 };
