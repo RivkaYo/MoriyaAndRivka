@@ -4,6 +4,9 @@ import useFetch from "../functions/useFetch";
 
 const Home = ({ currentUser, setCurrentUser}) => {
   const navigate= useNavigate()
+  const activeStyle= { fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#3339b3"}
   const handleLogout=()=>{
     localStorage.setItem("currentUser",{})
     setCurrentUser({})
@@ -12,11 +15,28 @@ const Home = ({ currentUser, setCurrentUser}) => {
   return (
     <div>
       <header>
-        <h4>Hello, {currentUser.name ? currentUser.name : "guest"} </h4>
-        <NavLink to="/home"> info </NavLink>
-        <NavLink to="todos"> Todos </NavLink>
-        <NavLink to="posts"> Posts </NavLink>
-        <NavLink to="Albums"> Albums </NavLink>
+        <h4>Hello, {currentUser.username ? currentUser.username : "guest"} </h4>
+        <NavLink 
+          style={({isActive}) => isActive ? activeStyle : null } 
+          to="/home"
+          end
+          > info 
+          </NavLink>
+        <NavLink 
+          style={({isActive}) => isActive ? activeStyle : null } 
+          to="todos"
+          > Todos 
+          </NavLink>
+        <NavLink
+          style={({isActive}) => isActive ? activeStyle : null } 
+          to="posts"
+          > Posts 
+          </NavLink>
+        <NavLink 
+          style={({isActive}) => isActive ? activeStyle : null } 
+          to="Albums"
+          > Albums 
+          </NavLink>
         <button onClick={handleLogout}>Logout</button>
       </header>
       <Outlet />

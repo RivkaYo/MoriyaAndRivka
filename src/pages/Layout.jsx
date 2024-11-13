@@ -9,8 +9,8 @@ const Layout = ({ currentUser, setCurrentUser }) => {
     
   },[])
   return (
-    <div>
-      <h2>welcome to our website!!!!!</h2>
+    <div >
+      <h2 className="layoutHeader">welcome to our website!!!!!</h2>
       <Outlet />
     </div>
   );
