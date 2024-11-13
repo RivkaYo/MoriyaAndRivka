@@ -14,7 +14,7 @@ const useFetch = (url, optionsObj) => {
     } catch (err) {
       setFetchError(err);
       console.log("err: ", err);
-      alert(`fetchError: ${fetchError}`);
+      console.log(`fetchError: ${fetchError}`);
     } finally {
       setFetchError(null);
     }

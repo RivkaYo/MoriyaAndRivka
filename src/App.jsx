@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
   return (
     <>
@@ -50,11 +50,23 @@ function App() {
                 />
               }
             >
-              <Route index element={<Info key={currentUser.username} currentUser={currentUser}/>} />
-              <Route path="todos" element={<Todos />} />
-              <Route path="posts" element={<Posts />} />
-              <Route path="albums" element={<Albums />}>
-                <Route path="photos" element={<Photos />} />
+              <Route index element={<Info />} />
+              <Route
+                path="todos"
+                element={<Todos currentUser={currentUser} />}
+              />
+              <Route
+                path="posts"
+                element={<Posts currentUser={currentUser} />}
+              />
+              <Route
+                path="albums"
+                element={<Albums currentUser={currentUser} />}
+              >
+                <Route
+                  path="photos"
+                  element={<Photos currentUser={currentUser} />}
+                />
               </Route>
             </Route>
           </Route>

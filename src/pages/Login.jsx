@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useFetch from "../functions/useFetch";
-import { NavLink } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
@@ -15,13 +14,10 @@ const Login = ({ setCurrentUser, currentUser }) => {
       if (!currentUser) throw new Error("wrong user name or password");
       if (currentUser.website !== password)
         throw new Error("wrong user name or password");
-      console.log("password: ", password);
-      console.log("currentUser.website: ", currentUser.website);
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
       navigate("/home");
     } catch (err) {
-      console.log("err: ", err.message);
-      alert(err.message);
+      console.log(err.message);
     }
   }
 
