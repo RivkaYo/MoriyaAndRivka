@@ -50,7 +50,7 @@ function App() {
                 />
               }
             >
-              <Route index element={<Info currentUser={currentUser}/>} />
+              <Route index element={<Info key={currentUser.username} currentUser={currentUser}/>} />
               <Route path="todos" element={<Todos />} />
               <Route path="posts" element={<Posts />} />
               <Route path="albums" element={<Albums />}>
