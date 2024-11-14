@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const Albums = ({currentUser}) => {
     const myAlbumsArr = findUsersitems("albums", currentUser)
     if (!myAlbumsArr) return<p>Loading...</p>
-    console.log('myAlbumsArr: ', myAlbumsArr);
   
   return (
     <div>
@@ -15,7 +14,7 @@ const Albums = ({currentUser}) => {
       <SearchBar items={myAlbumsArr}/>
 
         {myAlbumsArr.map((albumItem) => (
-          <Link className="listItem" key={albumItem.id}>
+          <Link className="listItem" key={albumItem.id} to={`album/${albumItem.id}`}>
           <p>
            ID:{albumItem.id}<br/>
              {albumItem.title}

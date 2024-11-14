@@ -67,7 +67,7 @@ function App() {
                 element={<Albums currentUser={currentUser} />}
               >
                 <Route
-                  path="photos"
+                  path="album/:id:"
                   element={<Photos currentUser={currentUser} />}
                 />
               </Route>
