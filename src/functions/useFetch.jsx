@@ -6,7 +6,7 @@ const useFetch = (url, optionsObj) => {
   useEffect(() => {
     const apiUrl = `http://localhost:3000/${url}`;
     try {
-      fetch(apiUrl, optionsObj)
+      fetch(`http://localhost:3000/${url}`, optionsObj)
         .then((response) => {
           if (!response.ok) throw Error("Did not receive expected data");
           return response.json();
