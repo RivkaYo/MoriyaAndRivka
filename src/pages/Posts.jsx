@@ -1,38 +1,25 @@
-import React, { useState ,useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import findUsersitems from "../functions/findUsersitems";
 import SearchBar from "../components/SearchBar";
-import { Link } from "react-router-dom";
+import filterArrBySearch from "../functions/filterArrBySearch";
 
-const Posts = ({currentUser}) => {
-  const [itemsToDisplay, setItemsToDisplay] =useState([])
-  const myPostsArr = findUsersitems("posts", currentUser)
-  console.log('myPostsArr: ', myPostsArr);
-  if (myPostsArr){ setCheck(myPostsArr)}
-    // return<p>Loading...</p>}
-  
-  useEffect(()=>{
-    
-    console.log('myPostsArr2: ', myPostsArr);
-    setItemsToDisplay([...myPostsArr])
-  },[])
-  console.log('itemsToDisplay: ', itemsToDisplay);
+const Posts = ({ currentUser }) => {
+  const [searchText, setSearchText] = useState("");
+  const myPostsArr = findUsersitems("posts", currentUser);
+  if (!myPostsArr) return <p>Loading...</p>;
+  console.log("myPostsArr: ", myPostsArr);
+
   return (
     <div>
       <h1>Posts</h1>
-      <SearchBar 
-      items={myPostsArr} 
-      itemsToDisplay={itemsToDisplay} 
-      setItemsToDisplay={setItemsToDisplay}/>
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
 
-        {itemsToDisplay.map((postItem) => (
-        <Link className = "listItem" key={postItem.id}>
-          <p >
-           ID:{postItem.id}<br/>
-             {postItem.title}
-          </p>
-        </Link>
-        ))}
-     
+      {filterArrBySearch(searchText, myPostsArr).map((postItem) => (
+        <p key={postItem.id}>
+          {postItem.id}: {postItem.title}
+        </p>
+      ))}
     </div>
   );
 };

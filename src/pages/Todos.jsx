@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import useFetch from "../functions/useFetch";
 import TodoItem from "../components/TodoItem";
 import SearchBar from "../components/SearchBar";
 import AddTodo from "../components/AddTodo";
+import filterArrBySearch from "../functions/filterArrBySearch";
 
 const Todos = ({ currentUser }) => {
+  const [searchText, setSearchText] = useState("");
   const [todos] = useFetch("todos");
   const myTodosArr = [];
 
@@ -20,10 +22,11 @@ const Todos = ({ currentUser }) => {
   return (
     <div>
       <h1>Todos</h1>
+      {console.log("myTodosArr: ", myTodosArr)}
       <AddTodo />
-      <SearchBar />
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
       <ol>
-        {myTodosArr.map((todoItem) => (
+        {filterArrBySearch(searchText, myTodosArr).map((todoItem) => (
           <li key={todoItem.id}>
             <TodoItem item={todoItem} />
             <br></br>
