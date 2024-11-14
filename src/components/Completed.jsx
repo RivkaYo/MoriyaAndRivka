@@ -11,48 +11,22 @@ const Completed = ({ item }) => {
 
   useEffect(() => {
     console.log(isCompleted);
+    console.log("item: ", item);
+    console.log("item.id: ", item.id);
+    const apiUrl = `https://jsonplaceholder.typicode.com/todos/${item.id}`;
+    fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: item.userId,
+        id: item.id,
+        title: item.title,
+        completed: !item.completed,
+      }),
+    });
   }, [isCompleted]);
-
-  const bodyData = {
-    completed: isCompleted,
-  };
-
-  // const [dataToComplete] = useFetch(`todos/${item.id}`, {
-  //   method: "PUT",
-  //   headers: {
-  //     "Content-Type": "application/json; charset=UTF-8",
-  //   },
-  //   body: JSON.stringify(bodyData),
-  // });
-
-  // fetch("http://localhost:3000/posts/1", {
-  //   method: "PUT",
-  //   body: JSON.stringify({
-  //     id: 1,
-  //     title: "foo",
-  //     body: "bar",
-  //     userId: 1,
-  //   }),
-  //   headers: {
-  //     "Content-type": "application/json; charset=UTF-8",
-  //   },
-  // })
-  //   .then((response) => response.json())
-  //   .then((json) => console.log("DEMO", json));
-
-  // fetch(`http://localhost:3000/todos/${item.id}`, {
-  //   method: "PATCH",
-  //   body: JSON.stringify({
-  //     completed: isCompleted,
-  //   }),
-  //   headers: {
-  //     "Content-type": "application/json; charset=UTF-8",
-  //   },
-  // })
-  //   .then((response) => response.json())
-  //   .then((json) => console.log(json));
-
-  // console.log("dataToComplete: ", dataToComplete);
   return (
     <div>
       <input type="checkbox" onClick={handleCompleted} />
