@@ -7,7 +7,6 @@ import filterArrBySearch from "../functions/filterArrBySearch";
 
 const Todos = ({ currentUser }) => {
   const [searchText, setSearchText] = useState("");
-  console.log("hi");
   const [todos] = useFetch("todos");
   const myTodosArr = [];
 
