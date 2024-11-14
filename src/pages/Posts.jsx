@@ -9,7 +9,6 @@ const Posts = ({ currentUser }) => {
   const [searchText, setSearchText] = useState("");
   const myPostsArr = findUsersitems("posts", currentUser);
   if (!myPostsArr) return <p>Loading...</p>;
-  console.log("myPostsArr: ", myPostsArr);
 
   return (
     <div>
@@ -18,9 +17,9 @@ const Posts = ({ currentUser }) => {
 
       {filterArrBySearch(searchText, myPostsArr).map((postItem) => (
         <Link className="listItem" key={postItem.id} to={`${postItem.id}`}>
-        <p key={postItem.id}>
-          {postItem.id}: {postItem.title}
-        </p>
+          <p key={postItem.id}>
+            {postItem.id}: {postItem.title}
+          </p>
         </Link>
       ))}
     </div>
