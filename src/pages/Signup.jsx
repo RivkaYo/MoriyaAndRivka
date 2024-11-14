@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../functions/useFetch";
 import apiRequest from "../functions/requestApi";
+
 const Signup = ({ setCurrentUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

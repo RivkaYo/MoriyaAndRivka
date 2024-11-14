@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import useFetch from "../functions/useFetch";
-
 import { useNavigate } from "react-router-dom";
+import useFetch from "../functions/useFetch";
 
 const Login = ({ setCurrentUser, currentUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [users] = useFetch("users");
   const navigate = useNavigate();
+
   function handleLogin() {
     try {
       setCurrentUser(users.find((user) => user.username === username));
@@ -17,15 +17,14 @@ const Login = ({ setCurrentUser, currentUser }) => {
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
       navigate("/home");
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
     }
   }
 
   return (
     <div>
       <h1>Login Here!</h1>
-      <h3>Bret</h3>
-      <h3>hildegard.org</h3>
+      <h6>hildegard.org</h6>
       <label htmlFor="username">Username:</label>
       <br></br>
       <input

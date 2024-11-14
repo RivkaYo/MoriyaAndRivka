@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import findUsersitems from "../functions/findUsersitems";
 import SearchBar from "../components/SearchBar";
 import filterArrBySearch from "../functions/filterArrBySearch";
-import { Link } from "react-router-dom";
 
 const Posts = ({ currentUser }) => {
   const [searchText, setSearchText] = useState("");

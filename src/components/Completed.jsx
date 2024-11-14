@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import useFetch from "../functions/useFetch";
 import { useState } from "react";
 
 const Completed = ({ item }) => {
@@ -11,8 +10,6 @@ const Completed = ({ item }) => {
 
   useEffect(() => {
     console.log(isCompleted);
-    console.log("item: ", item);
-    console.log("item.id: ", item.id);
     const apiUrl = `https://jsonplaceholder.typicode.com/todos/${item.id}`;
     fetch(apiUrl, {
       method: "PUT",
@@ -27,6 +24,7 @@ const Completed = ({ item }) => {
       }),
     });
   }, [isCompleted]);
+
   return (
     <div>
       <input type="checkbox" onClick={handleCompleted} />

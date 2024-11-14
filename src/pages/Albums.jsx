@@ -1,10 +1,9 @@
 import React from "react";
-// import { Outlet } from "react-router-dom";
-import findUsersitems from "../functions/findUsersitems";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import findUsersitems from "../functions/findUsersitems";
 import SearchBar from "../components/SearchBar";
 import filterArrBySearch from "../functions/filterArrBySearch";
-import { useState } from "react";
 
 const Albums = ({ currentUser }) => {
   const [searchText, setSearchText] = useState("");
@@ -14,10 +13,11 @@ const Albums = ({ currentUser }) => {
   return (
     <div>
       <h2>Albums</h2>
-      <SearchBar 
-        searchText={searchText}  
+      <SearchBar
+        searchText={searchText}
         items={myAlbumsArr}
-        setSearchText={setSearchText} />
+        setSearchText={setSearchText}
+      />
 
       {filterArrBySearch(searchText, myAlbumsArr).map((albumItem) => (
         <Link className="listItem" key={albumItem.id} to={`${albumItem.id}`}>
@@ -28,7 +28,6 @@ const Albums = ({ currentUser }) => {
           </p>
         </Link>
       ))}
-      {/* <Outlet /> */}
     </div>
   );
 };

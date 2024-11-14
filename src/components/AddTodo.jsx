@@ -1,30 +1,33 @@
 import React, { useState } from "react";
-import Completed from "./Completed";
 
-const AddTodo = ({ currentUser, todosLength, setAddTodo, addTodo, myTodosArr}) => {
-  const [newTodo, setNewTodo]= useState("")
-  
-  function handleClick(){
-    const newTodoObj={
+const AddTodo = ({ currentUser, todosLength, setAddTodo, addTodo }) => {
+  const [newTodo, setNewTodo] = useState("");
+
+  function handleClick() {
+    const newTodoObj = {
       userId: currentUser.id,
-      id: Number(todosLength)+1,
+      id: Number(todosLength) + 1,
       title: newTodo,
-      Completed: false
-    }
+      Completed: false,
+    };
     fetch("http://localhost:3000/todos", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newTodoObj)
-    })
-    setAddTodo(!addTodo)
-    console.log(' newTodoObj: ',  newTodoObj);
+      body: JSON.stringify(newTodoObj),
+    });
+    setAddTodo(!addTodo);
   }
   return (
     <div>
       <label htmlFor="newTodo">enter new to do:</label>
-      <input type="" id="newTodo" value={newTodo} onChange={(e)=>setNewTodo(e.target.value)} />
+      <input
+        type=""
+        id="newTodo"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
       <button onClick={handleClick}>Add</button>
     </div>
   );

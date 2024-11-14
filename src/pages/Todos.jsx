@@ -8,7 +8,8 @@ import filterArrBySearch from "../functions/filterArrBySearch";
 const Todos = ({ currentUser }) => {
   const [searchText, setSearchText] = useState("");
   const [todos] = useFetch("todos");
-  const [addTodo, setAddTodo] =useState(false)
+  const [addTodo, setAddTodo] = useState(false);
+
   const myTodosArr = [];
 
   function checkIfMine(todo) {
@@ -23,21 +24,18 @@ const Todos = ({ currentUser }) => {
   return (
     <div>
       <h2>Todos</h2>
-      {console.log("myTodosArr: ", myTodosArr)}
-      <SearchBar 
-      searchText={searchText} 
-      setSearchText={setSearchText} />
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
       <br />
-      <button onClick={()=>setAddTodo(!addTodo)}
-        >Add To Do
-        </button>
-      {addTodo && 
-      <AddTodo 
-        currentUser={currentUser} 
-        todosLength={todos.length} 
-        setAddTodo={setAddTodo}
-        addTodo={addTodo}
-        myTodosArr={myTodosArr} />}
+      <button onClick={() => setAddTodo(!addTodo)}>Add To Do</button>
+      {addTodo && (
+        <AddTodo
+          currentUser={currentUser}
+          todosLength={todos.length}
+          setAddTodo={setAddTodo}
+          addTodo={addTodo}
+          myTodosArr={myTodosArr}
+        />
+      )}
       <ol>
         {filterArrBySearch(searchText, myTodosArr).map((todoItem) => (
           <li key={todoItem.id}>
