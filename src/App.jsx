@@ -61,7 +61,12 @@ function App() {
               <Route
                 path="posts"
                 element={<Posts currentUser={currentUser} />}
-              />
+              >
+                 <Route
+                  path=":id:"
+                  element={<Photos currentUser={currentUser} />}
+                />
+              </Route>
               <Route
                 path="albums"
                 element={<Albums currentUser={currentUser} />}

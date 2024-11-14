@@ -13,7 +13,7 @@ const Posts = ({ currentUser }) => {
 
   return (
     <div>
-      <h1>Posts</h1>
+      <h2>Posts</h2>
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
 
       {filterArrBySearch(searchText, myPostsArr).map((postItem) => (

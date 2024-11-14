@@ -10,7 +10,7 @@ const Albums = ({currentUser}) => {
   
   return (
     <div>
-      <h1>Albums</h1>
+      <h2>Albums</h2>
       <SearchBar items={myAlbumsArr}/>
 
         {myAlbumsArr.map((albumItem) => (

@@ -25,7 +25,7 @@ const Login = ({ setCurrentUser, currentUser }) => {
     <div>
       <h1>Login Here!</h1>
       <h3>Bret</h3>
-      <h1>hildegard.org</h1>
+      <h3>hildegard.org</h3>
       <label htmlFor="username">Username:</label>
       <br></br>
       <input
