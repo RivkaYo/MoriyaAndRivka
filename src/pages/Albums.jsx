@@ -14,7 +14,7 @@ const Albums = ({currentUser}) => {
       <SearchBar items={myAlbumsArr}/>
 
         {myAlbumsArr.map((albumItem) => (
-          <Link className="listItem" key={albumItem.id} to={`album/${albumItem.id}`}>
+          <Link className="listItem" key={albumItem.id} to={`${albumItem.id}`}>
           <p>
            ID:{albumItem.id}<br/>
              {albumItem.title}

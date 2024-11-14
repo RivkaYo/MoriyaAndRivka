@@ -3,6 +3,7 @@ import { useState } from "react";
 import findUsersitems from "../functions/findUsersitems";
 import SearchBar from "../components/SearchBar";
 import filterArrBySearch from "../functions/filterArrBySearch";
+import { Link } from "react-router-dom";
 
 const Posts = ({ currentUser }) => {
   const [searchText, setSearchText] = useState("");
@@ -16,9 +17,11 @@ const Posts = ({ currentUser }) => {
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
 
       {filterArrBySearch(searchText, myPostsArr).map((postItem) => (
+        <Link className="listItem" key={postItem.id} to={`${postItem.id}`}>
         <p key={postItem.id}>
           {postItem.id}: {postItem.title}
         </p>
+        </Link>
       ))}
     </div>
   );

@@ -34,7 +34,7 @@ const Home = ({ currentUser, setCurrentUser}) => {
           </NavLink>
         <NavLink 
           style={({isActive}) => isActive ? activeStyle : null } 
-          to="Albums"
+          to="albums"
           > Albums 
           </NavLink>
         <button onClick={handleLogout}>Logout</button>
